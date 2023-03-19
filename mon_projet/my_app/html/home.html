@@ -3,14 +3,27 @@
   <head>
     <meta charset="UTF-8">
     <title>Homepage</title>
+    <style>
+      /* Add style to highlight latest entry */
+      .highlight {
+        border: 2px solid blue;
+        background-color: #89caf0;
+      }
+    </style>
   </head>
   <body>
-    <h1>Homepage</h1>
-    <a href="{% url 'add_entry' %}">Add Entry</a>
-    <ul>
+    <h1>Bienvenue sur la page d'accueil !</h1>
+    {% if entries %}
       {% for entry in entries %}
-      <li>{{ entry.id }}. {{ entry.name }} - {{ entry.content }}</li>
+        <div id="entry-{{ forloop.counter0 }}" {% if forloop.last %}class="highlight"{% endif %}>
+          <h2>{{ entry.name }}</h2>
+          <p>{{ entry.content }}</p>
+        </div>
       {% endfor %}
-    </ul>
+    {% else %}
+      <p>Aucune entrée pour le moment.</p>
+    {% endif %}
+    <hr>
+    <a href="{% url 'add_entry' %}">Ajouter une entrée</a>
   </body>
 </html>
