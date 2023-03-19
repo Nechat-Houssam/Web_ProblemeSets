@@ -54,7 +54,7 @@ ROOT_URLCONF = 'mon_projet.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['C:/Users/necha/Documents/Web_ProblemeSets/mon_projet/my_app/html'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

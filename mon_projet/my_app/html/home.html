@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+  </head>
+  <body>
+    <h1>Homepage</h1>
+    <a href="{% url 'add_entry' %}">Add Entry</a>
+    <ul>
+      {% for entry in entries %}
+      <li>{{ entry.id }}. {{ entry.name }} - {{ entry.content }}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
