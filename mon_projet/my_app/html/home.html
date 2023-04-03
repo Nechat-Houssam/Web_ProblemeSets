@@ -1,31 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Homepage</title>
-    <style>
-      /* Add style to highlight latest entry */
-      .highlight {
-        border: 2px solid blue;
-        background-color: #f0f0f0;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Bienvenue sur la page d'accueil !</h1>
-    {% if entries %}
-      {% for entry in entries %}
-        <div id="entry-{{ forloop.counter0 }}" {% if forloop.last %}class="highlight"{% endif %}>
-          <h2>{{ entry.name }}</h2>
-          <p>{{ entry.content }}</p>
-          <p>ID: {{ entry.id }}</p>
-          <a href="{% url 'entry' entry.id %}">Voir en JSON</a>
-        </div>
-      {% endfor %}
-    {% else %}
-      <p>Aucune entrée pour le moment.</p>
+<head>
+    <title>Jokes website</title>
+</head>
+<body>
+    <h1>Jokes website</h1>
+    {% if entry_id %}
+        <h2>Entry {{ entry_id }}</h2>
     {% endif %}
-    <hr>
-    <a href="{% url 'add_entry' %}">Ajouter une entrée</a>
-  </body>
+    <ul>
+    {% for quote in quotes %}
+        <li>{{ quote.content }} - {{ quote.person.name }}</li>
+    {% empty %}
+        <li>No quotes yet!</li>
+    {% endfor %}
+    </ul>
+    <a href="/my_app/add/">Add entry</a>
+</body>
 </html>
